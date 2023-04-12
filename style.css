@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+    --ff-primary: 'Roboto', sans-serif;
+    --color-primary: #FFFFFF; 
+
+    --bg-color: #000000;
+}
+
+body {       
+    background: var(--bg-color);
+}
+
+body * {
+    font-family: var(--ff-primary);
+}
+
+#app {
+    width: 112.0rem;
+    margin: 11.5rem auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8.7rem;
+}
+
+
+input, button {
+    font-family: var(--ff-primary);
+    border-radius: 5px;
+    border: none;
+}
+
+.search {
+    display: flex;
+    gap: .8rem;
+}
+
+.search input {
+    display: flex;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    background: rgba(124, 124, 138, 1);
+    background: rgb(6, 24, 28, 100%);
+    width: 46.2rem;
+    padding: 1.6rem;
+
+    color: #E1E1E6;
+}
+
+.search button {
+    display: flex;
+    gap: .8rem;
+    justify-content: center;
+    align-items: center;
+
+    background: #065E7C;
+    padding: 1.2rem 3.2rem;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--color-primary);
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+
+    font-family: var(--ff-primary);
+    color: #E1E1E6;
+
+    border-collapse: collapse;  
+
+    box-shadow: 0 0 3rem 1em rgba(74, 128, 140, 0.3);
+}
+
+thead tr {
+    padding: 16px 24px 40px;
+}
+
+tr th {
+    background: rgb(9, 45, 56, 100%);
+    padding: 1.6rem 0 1.6rem 4rem;
+
+    text-align: left;    
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 160%;
+}
+
+tr th:first-child {
+    border-top-left-radius: .5rem;    
+}
+
+tr th:last-child {
+    border-top-right-radius: .5rem;
+}
+
+tr td:first-child {
+    border-bottom-left-radius: .5rem;
+}
+tr td:last-child {
+    border-bottom-right-radius: .5rem;
+    
+}
+
+tbody td {
+    padding: 2.4rem 0 2.4rem 4rem;
+    font-family: var(--ff-primary);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 160%;
+}
+
+tbody tr:nth-child(odd) {
+    background: rgba(6, 22, 27, 0.5);;
+}
+
+tbody tr:nth-child(even) {
+    background: rgba(6, 24, 28, 1);
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(74, 128, 140, 0.3);
+    font-weight: 700;    
+} 
+
+td.user {
+    display: flex;
+    gap: 1.6rem;
+}
+
+td.user div span {
+    font-weight: 400;
+}
+
+td.user img {
+    width: 5.6rem;
+    height: 5.6rem;
+
+    border-radius: 50%;
+}
+
+td button {
+    background: none;
+    border: none;    
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 160%;
+    color: rgba(247, 90, 104, 1);
+    cursor: pointer;
+}
+
