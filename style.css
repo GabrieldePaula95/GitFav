@@ -76,6 +76,11 @@ input, button {
     cursor: pointer;
 }
 
+.border {
+    border-radius: 8px;
+    border: 1px solid #4A808C;
+}
+
 table {
     width: 100%;
 
@@ -83,8 +88,20 @@ table {
     color: #E1E1E6;
 
     border-collapse: collapse;  
+    border-radius: 8px;
+}
 
-    box-shadow: 0 0 3rem 1em rgba(74, 128, 140, 0.3);
+tr {
+    background-color: rgb(6, 22, 27, 0.5);
+}
+.message {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+    background-color: #030B0D;
+    width: 100%;
+    height: 100%;
 }
 
 thead tr {

@@ -68,29 +68,44 @@ export class FavoritesView extends Favorites {
     }
 
     update() {
-        this.removeAllTr()      
+        this.removeAllTr()  
         
-        this.entries.forEach( user => {
-            const row = this.createRow()
+        const noUsersMessage = document.createElement('tr');
+        noUsersMessage.innerHTML = `
+            <td class="message">
+                <img src="./assets/Estrela.svg" alt="Estrela">
+                <p>Nenhum usuário favorito encontrado.</p>
+            </td>`;
+        
+        if (this.entries.length === 0) {
+        this.tbody.append(noUsersMessage);
+        } else {
 
-            row.querySelector('.user img').src = `https://github.com/${user.login}.png`
-            row.querySelector('.user img').alt = `Imagem de ${user.name}`
-            row.querySelector('.user p').textContent = user.name
-            row.querySelector('.user a').href = `https://github.com/${user.login}`
-            row.querySelector('.user span').textContent = user.login
-            row.querySelector('.repositories').textContent = user.public_repos
-            row.querySelector('.followers').textContent = user.followers
+        
+            this.entries.forEach( user => {
+                const row = this.createRow()
 
-            row.querySelector('.remove').onclick = () => {
-                const isOk = confirm('Tem certeza que deseja deletar essa linha?')
-                if(isOk) {
-                    this.delete(user)
+                row.querySelector('.user img').src = `https://github.com/${user.login}.png`
+                row.querySelector('.user img').alt = `Imagem de ${user.name}`
+                row.querySelector('.user p').textContent = user.name
+                row.querySelector('.user a').href = `https://github.com/${user.login}`
+                row.querySelector('.user span').textContent = user.login
+                row.querySelector('.repositories').textContent = user.public_repos
+                row.querySelector('.followers').textContent = user.followers
+
+                row.querySelector('.remove').onclick = () => {
+                    const isOk = confirm('Tem certeza que deseja deletar essa linha?')
+                    if(isOk) {
+                        this.delete(user)
+                    }
                 }
-            }
-            
-            this.tbody.append(row)
-        })
+                
+                this.tbody.append(row)
+            })
+        }
     }
+
+    
 
     createRow() {
         const tr = document.createElement('tr')
