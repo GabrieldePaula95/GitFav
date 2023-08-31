@@ -70,8 +70,11 @@ export class FavoritesView extends Favorites {
     noFavoritesMessage(){
         if (this.entries.length === 0){
             document.querySelector(".message").style.display = ""            
+            document.querySelector(".border1").style.border = "1px solid #4A808C"            
+            document.querySelector(".border1").style.borderRadius = "8px"            
         } else {
             document.querySelector(".message").style.display = "none"
+            document.querySelector(".border1").style.border = "none"
         }
     }
 
