@@ -67,42 +67,39 @@ export class FavoritesView extends Favorites {
         }        
     }
 
+    noFavoritesMessage(){
+        if (this.entries.length === 0){
+            document.querySelector(".message").style.display = ""            
+        } else {
+            document.querySelector(".message").style.display = "none"
+        }
+    }
+
     update() {
         this.removeAllTr()  
-        
-        const noUsersMessage = document.createElement('tr');
-        noUsersMessage.innerHTML = `
-            <td class="message">
-                <img src="./assets/Estrela.svg" alt="Estrela">
-                <p>Nenhum usuário favorito encontrado.</p>
-            </td>`;
-        
-        if (this.entries.length === 0) {
-        this.tbody.append(noUsersMessage);
-        } else {
+              
+        this.entries.forEach( user => {
+            const row = this.createRow()
 
-        
-            this.entries.forEach( user => {
-                const row = this.createRow()
+            row.querySelector('.user img').src = `https://github.com/${user.login}.png`
+            row.querySelector('.user img').alt = `Imagem de ${user.name}`
+            row.querySelector('.user p').textContent = user.name
+            row.querySelector('.user a').href = `https://github.com/${user.login}`
+            row.querySelector('.user span').textContent = user.login
+            row.querySelector('.repositories').textContent = user.public_repos
+            row.querySelector('.followers').textContent = user.followers
 
-                row.querySelector('.user img').src = `https://github.com/${user.login}.png`
-                row.querySelector('.user img').alt = `Imagem de ${user.name}`
-                row.querySelector('.user p').textContent = user.name
-                row.querySelector('.user a').href = `https://github.com/${user.login}`
-                row.querySelector('.user span').textContent = user.login
-                row.querySelector('.repositories').textContent = user.public_repos
-                row.querySelector('.followers').textContent = user.followers
-
-                row.querySelector('.remove').onclick = () => {
-                    const isOk = confirm('Tem certeza que deseja deletar essa linha?')
-                    if(isOk) {
-                        this.delete(user)
-                    }
+            row.querySelector('.remove').onclick = () => {
+                const isOk = confirm('Tem certeza que deseja deletar essa linha?')
+                if(isOk) {
+                    this.delete(user)
                 }
-                
-                this.tbody.append(row)
-            })
-        }
+            }
+            
+            this.tbody.append(row)
+            this.noFavoritesMessage()
+        })
+        
     }
 
     
@@ -135,6 +132,7 @@ export class FavoritesView extends Favorites {
         this.tbody.querySelectorAll('tr')
             .forEach((tr) => {
                 tr.remove()
+                this.noFavoritesMessage()
             })
     }
 }
